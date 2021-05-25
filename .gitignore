@@ -3,8 +3,7 @@ node_modules
 package-lock.json
 
 # build
-main.js
-*.js.map
+dist/*
 
 # obsidian
 data.json
