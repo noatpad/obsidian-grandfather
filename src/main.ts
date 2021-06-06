@@ -1,5 +1,4 @@
-import { Plugin } from 'obsidian';
-import { DateTime } from 'luxon';
+import { Plugin, moment } from 'obsidian';
 import { ISettings, SettingsTab, DEFAULT_SETTINGS } from './settings';
 
 export default class Grandfather extends Plugin {
@@ -23,15 +22,16 @@ export default class Grandfather extends Plugin {
   }
 
   formatTimestamp() {
-    const now = DateTime.now();
-    switch (this.settings.format) {
-      case '12h':     return now.toLocaleString(DateTime.TIME_SIMPLE);
-      case '12hs':    return now.toLocaleString(DateTime.TIME_WITH_SECONDS);
-      case '24h':     return now.toLocaleString(DateTime.TIME_24_SIMPLE);
-      case '24hs':    return now.toLocaleString(DateTime.TIME_24_WITH_SECONDS);
-      case 'dt':      return now.toLocaleString(DateTime.DATETIME_MED);
-      case 'dts':     return now.toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
-      case 'custom':  return now.toFormat(this.settings.customFormat);
+    const now = moment();
+    const { format, customFormat } = this.settings;
+    switch (format) {
+      case '12h':     return now.format('h:mm a');
+      case '12hs':    return now.format('h:mm:ss a');
+      case '24h':     return now.format('H:mm');
+      case '24hs':    return now.format('H:mm:ss');
+      case 'dt':      return now.format('MMM D, Y h:mm a');
+      case 'dts':     return now.format('MMM D, Y h:mm:ss a');
+      case 'custom':  return now.format(customFormat);
       default:        return "Invalid time format??";
     }
   }

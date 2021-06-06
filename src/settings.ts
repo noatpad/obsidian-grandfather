@@ -26,7 +26,7 @@ const FORMAT_OPTIONS = {
 const CUSTOM_FORMAT_DESCRIPTION = new DocumentFragment();
 CUSTOM_FORMAT_DESCRIPTION.append(
   createSpan({ text: 'Type in a custom format to use. Look ' }),
-  createEl('a', { text: 'here', href: 'https://moment.github.io/luxon/docs/manual/formatting#table-of-tokens' }),
+  createEl('a', { text: 'here', href: 'https://momentjs.com/docs/#/displaying/format/' }),
   createSpan({ text: ' for more information' })
 );
 
@@ -54,29 +54,25 @@ export class SettingsTab extends PluginSettingTab {
     new Setting(containerEl)
       .setName('Format')
       .setDesc('Set a time format to display')
-      .addDropdown(dropdown => {
-        dropdown
-          .addOptions(FORMAT_OPTIONS)
-          .setValue(this.plugin.settings.format)
-          .onChange(async (val: Format) => {
-            this.plugin.settings.format = val;
-            await this.saveSettings(true);
-          });
-      });
+      .addDropdown(dropdown => dropdown
+        .addOptions(FORMAT_OPTIONS)
+        .setValue(this.plugin.settings.format)
+        .onChange(async (val: Format) => {
+          this.plugin.settings.format = val;
+          await this.saveSettings(true);
+        }));
 
     if (this.plugin.settings.format === 'custom') {
       new Setting(containerEl)
         .setName('Custom Format')
         .setDesc(CUSTOM_FORMAT_DESCRIPTION)
-        .addText(text => {
-          text
-            .setPlaceholder('hh:mm a')
-            .setValue(this.plugin.settings.customFormat)
-            .onChange(async (val: string) => {
-              this.plugin.settings.customFormat = val;
-              await this.saveSettings();
-            });
-        });
+        .addText(text => text
+          .setPlaceholder('hh:mm a')
+          .setValue(this.plugin.settings.customFormat)
+          .onChange(async (val: string) => {
+            this.plugin.settings.customFormat = val;
+            await this.saveSettings();
+          }));
     }
   }
 }
