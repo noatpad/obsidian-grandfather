@@ -1,19 +1,20 @@
 {
   "name": "obsidian-grandfather",
-  "version": "0.1.0",
-  "description": "A simple plugin to display the time and date no the status bar.",
-  "main": "main.js",
+  "version": "1.0.0",
+  "description": "A simple plugin to display the time and date on the status bar",
+  "author": "Danny Hernandez",
+  "homepage": "https://github.com/noatpad/obsidian-grandfather",
+  "license": "MIT",
+  "main": "src/main.ts",
   "scripts": {
-    "dev": "rollup --config rollup.config.js -w",
-    "build": "rollup --config rollup.config.js"
+    "build": "rollup --config rollup.config.js",
+    "dev": "rollup --config rollup.config.dev.js -w"
   },
   "keywords": [
     "obsidian",
     "obsidian-md",
     "obsidian-plugin"
   ],
-  "author": "Daniel Hernandez",
-  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
