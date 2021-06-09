@@ -1,6 +1,6 @@
 {
   "name": "obsidian-grandfather",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple plugin to display the time and date on the status bar",
   "author": "Danny Hernandez",
   "homepage": "https://github.com/noatpad/obsidian-grandfather",
