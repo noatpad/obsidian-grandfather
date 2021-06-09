@@ -8,7 +8,7 @@ export default class Grandfather extends Plugin {
   async onload() {
     console.log('Loading Grandfather...');
 
-    this.settings = await this.loadData() || DEFAULT_SETTINGS;
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     this.addSettingTab(new SettingsTab(this.app, this));
 
     this.statusBar = this.addStatusBarItem();
