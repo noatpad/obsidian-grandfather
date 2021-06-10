@@ -7,7 +7,8 @@ You can select from a list of predefined time formats, or use a custom format th
 
 ## Installation
 ### From Obsidian
-- _coming soon™_
+- Within Obsidian, browse community plugins in Settings -> Community plugins & search for this plugin
+- Install and enable the Grandfather plugin
 
 ### From GitHub Releases
 - Go to the latest release [here](https://github.com/noatpad/obsidian-grandfather/releases/latest), & download the `grandfather.zip` file
